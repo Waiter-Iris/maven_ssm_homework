@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zzz.mapper.InfoMapper">
+	<resultMap id="BaseResultMap" type="cn.zzz.po.Info">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="VARCHAR" />
+		<result column="nation" property="nation" jdbcType="VARCHAR" />
+		<result column="edu" property="edu" jdbcType="VARCHAR" />
+		<result column="work" property="work" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="qq" property="qq" jdbcType="VARCHAR" />
+		<result column="wechat" property="wechat" jdbcType="VARCHAR" />
+		<result column="hobby" property="hobby" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+		<result column="salary" property="salary" jdbcType="VARCHAR" />
+		<result column="shoseNumber" property="shosenumber" jdbcType="INTEGER" />
+		<result column="weight" property="weight" jdbcType="INTEGER" />
+		<result column="height" property="height" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, username, password, sex, birthday, nation, edu, work, phone,
+		address, email,
+		qq, wechat, hobby, age, salary, shoseNumber, weight, height
+	</sql>
+
+	<select id="findById" resultMap="BaseResultMap" parameterType="int">
+		select
+		<include refid="Base_Column_List" />
+		from info
+		where 
+		id=#{id}
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from info
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from info
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="cn.zzz.po.Info">
+		insert into info (id, name, username,
+		password, sex, birthday,
+		nation, edu, work,
+		phone, address, email,
+		qq, wechat, hobby,
+		age, salary, shoseNumber,
+		weight, height)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR},
+		#{nation,jdbcType=VARCHAR}, #{edu,jdbcType=VARCHAR},
+		#{work,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR}, #{wechat,jdbcType=VARCHAR},
+		#{hobby,jdbcType=VARCHAR},
+		#{age,jdbcType=INTEGER}, #{salary,jdbcType=VARCHAR}, #{shosenumber,jdbcType=INTEGER},
+		#{weight,jdbcType=INTEGER}, #{height,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective" parameterType="cn.zzz.po.Info">
+		insert into info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="nation != null">
+				nation,
+			</if>
+			<if test="edu != null">
+				edu,
+			</if>
+			<if test="work != null">
+				work,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="qq != null">
+				qq,
+			</if>
+			<if test="wechat != null">
+				wechat,
+			</if>
+			<if test="hobby != null">
+				hobby,
+			</if>
+			<if test="age != null">
+				age,
+			</if>
+			<if test="salary != null">
+				salary,
+			</if>
+			<if test="shosenumber != null">
+				shoseNumber,
+			</if>
+			<if test="weight != null">
+				weight,
+			</if>
+			<if test="height != null">
+				height,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="nation != null">
+				#{nation,jdbcType=VARCHAR},
+			</if>
+			<if test="edu != null">
+				#{edu,jdbcType=VARCHAR},
+			</if>
+			<if test="work != null">
+				#{work,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="wechat != null">
+				#{wechat,jdbcType=VARCHAR},
+			</if>
+			<if test="hobby != null">
+				#{hobby,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null">
+				#{age,jdbcType=INTEGER},
+			</if>
+			<if test="salary != null">
+				#{salary,jdbcType=VARCHAR},
+			</if>
+			<if test="shosenumber != null">
+				#{shosenumber,jdbcType=INTEGER},
+			</if>
+			<if test="weight != null">
+				#{weight,jdbcType=INTEGER},
+			</if>
+			<if test="height != null">
+				#{height,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="cn.zzz.po.Info">
+		update info
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="nation != null">
+				nation = #{nation,jdbcType=VARCHAR},
+			</if>
+			<if test="edu != null">
+				edu = #{edu,jdbcType=VARCHAR},
+			</if>
+			<if test="work != null">
+				work = #{work,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				qq = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="wechat != null">
+				wechat = #{wechat,jdbcType=VARCHAR},
+			</if>
+			<if test="hobby != null">
+				hobby = #{hobby,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null">
+				age = #{age,jdbcType=INTEGER},
+			</if>
+			<if test="salary != null">
+				salary = #{salary,jdbcType=VARCHAR},
+			</if>
+			<if test="shosenumber != null">
+				shoseNumber = #{shosenumber,jdbcType=INTEGER},
+			</if>
+			<if test="weight != null">
+				weight = #{weight,jdbcType=INTEGER},
+			</if>
+			<if test="height != null">
+				height = #{height,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="cn.zzz.po.Info">
+		update info
+		set name = #{name,jdbcType=VARCHAR},
+		username = #{username,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		sex = #{sex,jdbcType=VARCHAR},
+		birthday = #{birthday,jdbcType=VARCHAR},
+		nation = #{nation,jdbcType=VARCHAR},
+		edu = #{edu,jdbcType=VARCHAR},
+		work = #{work,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		email = #{email,jdbcType=VARCHAR},
+		qq = #{qq,jdbcType=VARCHAR},
+		wechat = #{wechat,jdbcType=VARCHAR},
+		hobby = #{hobby,jdbcType=VARCHAR},
+		age = #{age,jdbcType=INTEGER},
+		salary = #{salary,jdbcType=VARCHAR},
+		shoseNumber = #{shosenumber,jdbcType=INTEGER},
+		weight = #{weight,jdbcType=INTEGER},
+		height = #{height,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
